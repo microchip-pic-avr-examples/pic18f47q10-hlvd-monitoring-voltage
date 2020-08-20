@@ -25,6 +25,7 @@ The HLVD is a necessary power supply monitoring feature in numerous battery powe
 # Demo Description
 
 ![Block Diagram](images/Block_diagram.jpg)
+
 		Figure 1: Block diagram of application demo
 
 * PIC18F47Q10 Curiosity Nano board and external power supply are used to demonstrate the configuration and usage of the HLVD module. HLVD is used to monitor the microcontroller supply voltage for low and high voltage detect.
@@ -36,6 +37,7 @@ The HLVD is a necessary power supply monitoring feature in numerous battery powe
 
 # Hardware used
 * [PIC18F47Q10 Curiosity nano evaluation board](https://www.microchip.com/Developmenttools/ProductDetails/DM182029)
+
 With full program and debug capabilities, the PIC18F47Q10 Curiosity Nano evaluation kit offers complete support for the new design. With the award-winning MPLAB X integrated development platform and MPLAB Code Configurator (MCC), the kit provides access to the Intelligent analog and Core Independent Peripherals on the PIC18F47Q10. Figure 2 shows the PIC18F47Q10 Curiosity Nano board.
 
 ![PIC18F47Q10 Curiosity Nano board](images/PIC18F47Q10_Curiosity_Nano_board.jpg)
@@ -51,11 +53,12 @@ Microchip’s free MPLAB X IDE, compiler and MPLAB Code Configurator (MCC) graph
 * [MPLAB® Code Configurator (MCC) v3.85.1](https://www.microchip.com/mplab/mplab-code-configurator)
 * [MCC Device Libraries PIC10 / PIC12 / PIC16 / PIC18  MCUs v1.78.0](microchip.com/mplab/mplab-code-configurator)
 * [Microchip PIC18F-Q Series Device Support 1.3.89](https://packs.download.microchip.com/)
+* [Data Visualizer](https://gallery.microchip.com/packages/AtmelDataVisualizerInstaller-Standalone/)
 
 ***Note: For running the demo, the installed tool versions should be the same or later. This example is not tested with previous versions.***
 
 ## Data Visualizer:
-Data Visualizer is a software tool used to process and visualize data. The Data Visualizer can receive data from various sources such as the Embedded Debugger Data Gateway Interface (DGI) and COM ports. Data Visualizer is made up of several modules such as Graph, Oscilloscope, Terminal, Power debugging, Custom dashboard etc. In this example, Standalone data visualizer tool is used to receive messages from the Curiosity Nano board. The terminal window is used to display the messages upon detection of low or high supply voltage using HLVD. For more details on the Data Visualizer tool refer to the Data Visualizer user guide.
+Data Visualizer is a software tool used to process and visualize data. The Data Visualizer can receive data from various sources such as the Embedded Debugger Data Gateway Interface (DGI) and COM ports. Data Visualizer is made up of several modules such as Graph, Oscilloscope, Terminal, Power debugging, Custom dashboard etc. In this example, Standalone data visualizer tool is used to receive messages from the Curiosity Nano board. The terminal window is used to display the messages upon detection of low or high supply voltage using HLVD. For more details on the Data Visualizer tool refer to the [Data Visualizer user guide](https://ww1.microchip.com/downloads/secure/en/devicedoc/40001903b.pdf).
 
 # Demo realization
 ## Peripherals Configuration using MCC
