@@ -110,7 +110,7 @@ Add custom name to the PE0 output pin as LED using Pin module. Check the Start H
  Follow the steps for Hardware setup:
 1.	To power the PIC18F47Q10 device using external power supply the VOFF pin on the CNANO board should be connected to ground. Connect the pins VOFF pin to GND pin using the jumper.  Refer Figure 8 for VOFF pin.
 2.	Connect external power supply to VTG and GND pins of the curiosity nano board to power the PIC18F47Q10 device using external power supply. Make sure external supply voltage is 3.3V. Refer Figure 8 for VTG pin.
-3.	Setup the hardware, as shown in 9.
+3.	Setup the hardware, as shown in Figure 9.
 
 ![VTG_and_VOFF_pins](images/VTG_and_VOFF_pins.png)
 
