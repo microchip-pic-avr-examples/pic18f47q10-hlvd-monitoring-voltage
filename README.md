@@ -6,12 +6,15 @@
 Many of the PIC microcontrollers have a High/Low-Voltage Detect (HLVD) module that can be used to monitor the device voltage (VDD) and indicate the user if voltage has decreased below a specified voltage or increased above a specified voltage.  This is a programmable circuit that sets a device voltage trip point and the direction of change from that point (positive going, negative going or both).  This feature is useful in battery monitoring applications.
 This example demonstrates using an HLVD module to quickly detect when the supply voltage of the microcontroller has decreased below the specified trip point or increased above the specified trip point.
 
-# Useful Links
+# Related Documents / Useful Links
+
+- [TB3237 - Getting Started with HLVD Technical Brief](https://www.microchip.com/wwwappnotes/appnotes.aspx?appnote=en1001037)
 - [PIC18-Q10 Product Family Page](https://www.microchip.com/design-centers/8-bit/pic-mcus/device-selection/pic18f-q10-product-family)
 - [PIC18F47Q10 Data Sheet](http://ww1.microchip.com/downloads/en/DeviceDoc/40002043D.pdf)
 - [PIC18F47Q10 Code Examples on GitHub](https://github.com/microchip-pic-avr-examples?q=pic18f47q10-cnano)
 
 # HLVD
+
 The HLVD is a necessary power supply monitoring feature in numerous battery powered applications, where the supply voltage of a microcontroller could fall below the specified threshold level and require battery replacement or recharging for uninterrupted operation of the microcontroller.  The HLVD feature is capable of monitoring supply voltage of a microcontroller which is directly powered from a battery power source. The HLVD based voltage monitoring circuitry has several advantages over an ADC based voltage monitoring circuit. When the HLVD module is enabled, a comparator within HLVD uses an internally generated voltage reference as the set point. The set point is compared with the trip point. The “trip point” voltage is the voltage level at which the device detects a high or low voltage event, depending on the configuration of the HLVD module. When the supply voltage is equal to the trip point, the comparator generates an interrupt signal by setting the HLVDIF bit. The trip point voltage is software programmable to any of 16 values as shown in the below Table 1. The trip point is selected by programming the SEL bits.
 
 
