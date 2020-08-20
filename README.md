@@ -51,8 +51,9 @@ Microchip’s free MPLAB X IDE, compiler and MPLAB Code Configurator (MCC) graph
 * [MPLAB® Code Configurator (MCC) v3.85.1](https://www.microchip.com/mplab/mplab-code-configurator)
 * [MCC Device Libraries PIC10 / PIC12 / PIC16 / PIC18  MCUs v1.78.0](microchip.com/mplab/mplab-code-configurator)
 * [Microchip PIC18F-Q Series Device Support 1.3.89](https://packs.download.microchip.com/)
-* [Data Visualizer] (https://gallery.microchip.com/packages/AtmelDataVisualizerInstaller-Standalone/)
+
 ***Note: For running the demo, the installed tool versions should be the same or later. This example is not tested with previous versions.***
+
 ## Data Visualizer:
 Data Visualizer is a software tool used to process and visualize data. The Data Visualizer can receive data from various sources such as the Embedded Debugger Data Gateway Interface (DGI) and COM ports. Data Visualizer is made up of several modules such as Graph, Oscilloscope, Terminal, Power debugging, Custom dashboard etc. In this example, Standalone data visualizer tool is used to receive messages from the Curiosity Nano board. The terminal window is used to display the messages upon detection of low or high supply voltage using HLVD. For more details on the Data Visualizer tool refer to the Data Visualizer user guide.
 
@@ -96,14 +97,16 @@ Configurations to be done in the Pin Manager window:
 * Configure Pin RE0 as output to connect to LED0.
 
 ![Pin Manager](images/Pin_Manager.png)
+
 			Figure 6: Pin Manager
 
 Add custom name to the PE0 output pin as LED using Pin module. Check the Start High check box for LED pin PE0 for turning off the LED during initialization.
 
 ![Pin Module](images/Pin_Module.png)
-				Figure 7: Pin Module
+			
+			Figure 7: Pin Module
 
-# Hardware Setup
+### Hardware Setup
  Follow the steps for Hardware setup:
 1.	To power the PIC18F47Q10 device using external power supply the VOFF pin on the CNANO board should be connected to ground. Connect the pins VOFF pin to GND pin using the jumper.  Refer Figure 8 for VOFF pin.
 2.	Connect external power supply to VTG and GND pins of the curiosity nano board to power the PIC18F47Q10 device using external power supply. Make sure external supply voltage is 3.3V. Refer Figure 8 for VTG pin.
