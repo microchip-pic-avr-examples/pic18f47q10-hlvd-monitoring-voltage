@@ -56,7 +56,7 @@ Microchip’s free MPLAB X IDE, compiler and MPLAB Code Configurator (MCC) graph
 * [MPLAB® Code Configurator (MCC) v3.85.1](https://www.microchip.com/mplab/mplab-code-configurator)
 * [MCC Device Libraries PIC10 / PIC12 / PIC16 / PIC18  MCUs v1.78.0](microchip.com/mplab/mplab-code-configurator)
 * [Microchip PIC18F-Q Series Device Support 1.3.89](https://packs.download.microchip.com/)
-* [Data Visualizer](https://gallery.microchip.com/packages/AtmelDataVisualizerInstaller-Standalone/)
+* [Data Visualizer](https://www.microchip.com/mplab/avr-support/data-visualizer)
 
 ***Note: For running the demo, the installed tool versions should be the same or later. This example is not tested with previous versions.***
 
@@ -180,10 +180,4 @@ Open the standalone Data Visualizer tool.
 # Conclusion
 High/Low-Voltage Detect (HLVD) module of a PIC microcontroller is a valuable feature for monitoring the supply voltage of a microcontroller that is directly battery powered. The usage of HLVD module doesn’t require any extra port pin for supply voltage monitoring.
 
-# Related Documents / Application Notes
 
-* [TB3237 - Getting Started with HLVD Technical Brief](https://www.microchip.com/wwwappnotes/appnotes.aspx?appnote=en1001037)
-
-
-
-.
