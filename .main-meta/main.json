@@ -9,7 +9,7 @@
         "projectName": "pic18f47q10-hlvd-monitoring-voltage",
         "shortDescription": "This example demonstrates using an HLVD module to quickly detect when the supply voltage of the microcontroller has decreased below the specified trip point or increased above the specified trip point.",
         "ide": {
-            "name": "Mplabx",
+            "name": "MPLABX",
             "semverRange": ">=5.30.0"
         },
         "compiler": [
