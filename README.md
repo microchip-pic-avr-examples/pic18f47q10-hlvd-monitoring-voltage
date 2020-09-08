@@ -54,7 +54,7 @@ Microchip’s free MPLAB X IDE, compiler and MPLAB Code Configurator (MCC) graph
 * [MPLAB® X IDE v5.30](http://www.microchip.com/mplab/mplab-x-ide)
 * [XC8 Compiler v2.10](http://www.microchip.com/mplab/compilers)
 * [MPLAB® Code Configurator (MCC) v3.85.1](https://www.microchip.com/mplab/mplab-code-configurator)
-* [MCC Device Libraries PIC10 / PIC12 / PIC16 / PIC18  MCUs v1.78.0](microchip.com/mplab/mplab-code-configurator)
+* [MCC Device Libraries PIC10 / PIC12 / PIC16 / PIC18  MCUs v1.78.0](https://www.microchip.com/mplab/mplab-code-configurator)
 * [Microchip PIC18F-Q Series Device Support 1.3.89](https://packs.download.microchip.com/)
 * [Data Visualizer](https://www.microchip.com/mplab/avr-support/data-visualizer)
 
