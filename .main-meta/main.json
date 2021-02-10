@@ -4,12 +4,12 @@
     "content": {
         "metaDataVersion": "1.1.0",
         "name": "com.microchip.mcu8.mplabx.project.pic18f47q10-hlvd-monitoring-voltage",
-        "version": "1.0.2",
-        "displayName": "Monitoring supply voltage using HLVD in PIC18",
+        "version": "1.0.3",
+        "displayName": "Monitoring supply voltage using HLVD",
         "projectName": "pic18f47q10-hlvd-monitoring-voltage",
         "shortDescription": "This example demonstrates using an HLVD module to quickly detect when the supply voltage of the microcontroller has decreased below the specified trip point or increased above the specified trip point.",
         "ide": {
-            "name": "MPLABX",
+            "name": "MPLAB X",
             "semverRange": ">=5.30.0"
         },
         "compiler": [
@@ -50,9 +50,9 @@
             "HLVD","EUSART"
         ],
         "keywords": [
-            "HLVD",
             "High/Low-Voltage Detect"	,
-		  "Monitoring supply voltage"			
+		  "Monitoring supply voltage" ,
+	    "Battery voltage monitoring"			
         ],
 		"additionalData": {
 			"longDescription": {
