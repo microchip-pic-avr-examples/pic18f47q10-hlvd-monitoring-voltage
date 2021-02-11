@@ -8,10 +8,10 @@ This example demonstrates using an HLVD module to quickly detect when the supply
 
 # Related Documents / Useful Links
 
-- [TB3237 - Getting Started with HLVD Technical Brief](https://www.microchip.com/wwwappnotes/appnotes.aspx?appnote=en1001037)
+- [TB3237 - Getting Started with HLVD Technical Brief](https://www.microchip.com/90003237)
 - [PIC18-Q10 Product Family Page](https://www.microchip.com/design-centers/8-bit/pic-mcus/device-selection/pic18f-q10-product-family)
-- [PIC18F47Q10 Data Sheet](http://ww1.microchip.com/downloads/en/DeviceDoc/40002043D.pdf)
-- [PIC18F47Q10 Code Examples on GitHub](https://github.com/microchip-pic-avr-examples?q=pic18f47q10-cnano)
+- [PIC18F47Q10 Data Sheet](http://www.microchip.com/DS40002043)
+- [PIC18F47Q10 Code Examples on GitHub](https://github.com/microchip-pic-avr-examples?q=pic18f47q10)
 
 # HLVD
 
