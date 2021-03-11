@@ -1,24 +1,21 @@
 /**
-  @Generated Pin Manager Header File
+  Generated Pins header File
 
-  @Company:
+  Company:
     Microchip Technology Inc.
 
-  @File Name:
-    pin_manager.h
+  File Name:
+    pins.h
 
-  @Summary:
-    This is the Pin Manager file generated using PIC10 / PIC12 / PIC16 / PIC18 MCUs
+  Summary:
+    This is generated driver header for pins. 
 
-  @Description
-    This header file provides APIs for driver for .
-    Generation Information :
-        Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.78
-        Device            :  PIC18F47Q10
-        Driver Version    :  2.11
-    The generated drivers are tested against the following:
-        Compiler          :  XC8 2.05 and above
-        MPLAB 	          :  MPLAB X 5.20	
+  Description:
+    This header file provides APIs for all pins selected in the GUI.
+
+  Generation Information:
+    Driver Version:  3.0.0
+
 */
 
 /*
@@ -44,8 +41,8 @@
     SOFTWARE.
 */
 
-#ifndef PIN_MANAGER_H
-#define PIN_MANAGER_H
+#ifndef PINS_H
+#define PINS_H
 
 /**
   Section: Included Files
@@ -65,19 +62,27 @@
 #define PULL_UP_ENABLED      1
 #define PULL_UP_DISABLED     0
 
-// get/set RD0 procedures
-#define RD0_SetHigh()            do { LATDbits.LATD0 = 1; } while(0)
-#define RD0_SetLow()             do { LATDbits.LATD0 = 0; } while(0)
-#define RD0_Toggle()             do { LATDbits.LATD0 = ~LATDbits.LATD0; } while(0)
-#define RD0_GetValue()              PORTDbits.RD0
-#define RD0_SetDigitalInput()    do { TRISDbits.TRISD0 = 1; } while(0)
-#define RD0_SetDigitalOutput()   do { TRISDbits.TRISD0 = 0; } while(0)
-#define RD0_SetPullup()             do { WPUDbits.WPUD0 = 1; } while(0)
-#define RD0_ResetPullup()           do { WPUDbits.WPUD0 = 0; } while(0)
-#define RD0_SetAnalogMode()         do { ANSELDbits.ANSELD0 = 1; } while(0)
-#define RD0_SetDigitalMode()        do { ANSELDbits.ANSELD0 = 0; } while(0)
+// get/set RD0 aliases
+#define IO_RD0_TRIS                 TRISDbits.TRISD0
+#define IO_RD0_LAT                  LATDbits.LATD0
+#define IO_RD0_PORT                 PORTDbits.RD0
+#define IO_RD0_WPU                  WPUDbits.WPUD0
+#define IO_RD0_OD                   ODCONDbits.ODCD0
+#define IO_RD0_ANS                  ANSELDbits.ANSELD0
+#define IO_RD0_SetHigh()            do { LATDbits.LATD0 = 1; } while(0)
+#define IO_RD0_SetLow()             do { LATDbits.LATD0 = 0; } while(0)
+#define IO_RD0_Toggle()             do { LATDbits.LATD0 = ~LATDbits.LATD0; } while(0)
+#define IO_RD0_GetValue()           PORTDbits.RD0
+#define IO_RD0_SetDigitalInput()    do { TRISDbits.TRISD0 = 1; } while(0)
+#define IO_RD0_SetDigitalOutput()   do { TRISDbits.TRISD0 = 0; } while(0)
+#define IO_RD0_SetPullup()          do { WPUDbits.WPUD0 = 1; } while(0)
+#define IO_RD0_ResetPullup()        do { WPUDbits.WPUD0 = 0; } while(0)
+#define IO_RD0_SetPushPull()        do { ODCONDbits.ODCD0 = 0; } while(0)
+#define IO_RD0_SetOpenDrain()       do { ODCONDbits.ODCD0 = 1; } while(0)
+#define IO_RD0_SetAnalogMode()      do { ANSELDbits.ANSELD0 = 1; } while(0)
+#define IO_RD0_SetDigitalMode()     do { ANSELDbits.ANSELD0 = 0; } while(0)
 
-// get/set LED aliases
+// get/set RE0 aliases
 #define LED_TRIS                 TRISEbits.TRISE0
 #define LED_LAT                  LATEbits.LATE0
 #define LED_PORT                 PORTEbits.RE0
@@ -123,7 +128,7 @@ void PIN_MANAGER_IOC(void);
 
 
 
-#endif // PIN_MANAGER_H
+#endif // PINS_H
 /**
  End of File
 */

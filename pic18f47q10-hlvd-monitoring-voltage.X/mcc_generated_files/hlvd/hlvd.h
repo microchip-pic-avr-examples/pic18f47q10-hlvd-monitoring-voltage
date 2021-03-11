@@ -1,47 +1,56 @@
 /**
   HLVD Generated Driver API Header File
-
+ 
   @Company
     Microchip Technology Inc.
-
+ 
   @File Name
     hlvd.h
-
+ 
   @Summary
-    This is the generated header file for the HLVD driver using PIC10 / PIC12 / PIC16 / PIC18 MCUs 
-
+    This is the generated header file for the HLVD driver
+ 
   @Description
     This header file provides APIs for driver for HLVD.
     Generation Information :
-        Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.78
-        Device            :  PIC18F47Q10
         Driver Version    :  2.11
     The generated drivers are tested against the following:
-        Compiler          :  XC8 2.05 and above
-        MPLAB             :  MPLAB X 5.20
+        Compiler          :  XC8 v2.20
+        MPLAB             :  MPLAB X v5.40
 */
 
 /*
-    (c) 2018 Microchip Technology Inc. and its subsidiaries. 
+Copyright (c) [2012-2020] Microchip Technology Inc.  
+
+    All rights reserved.
+
+    You are permitted to use the accompanying software and its derivatives 
+    with Microchip products. See the Microchip license agreement accompanying 
+    this software, if any, for additional info regarding your rights and 
+    obligations.
     
-    Subject to your compliance with these terms, you may use Microchip software and any 
-    derivatives exclusively with Microchip products. It is your responsibility to comply with third party 
-    license terms applicable to your use of third party software (including open source software) that 
-    may accompany Microchip software.
+    MICROCHIP SOFTWARE AND DOCUMENTATION ARE PROVIDED "AS IS" WITHOUT 
+    WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT 
+    LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE, NON-INFRINGEMENT 
+    AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT WILL MICROCHIP OR ITS
+    LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT, NEGLIGENCE, STRICT 
+    LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER LEGAL EQUITABLE 
+    THEORY FOR ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES INCLUDING BUT NOT 
+    LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES, 
+    OR OTHER SIMILAR COSTS. 
     
-    THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER 
-    EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY 
-    IMPLIED WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS 
-    FOR A PARTICULAR PURPOSE.
+    To the fullest extend allowed by law, Microchip and its licensors 
+    liability will not exceed the amount of fees, if any, that you paid 
+    directly to Microchip to use this software. 
     
-    IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE, 
-    INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND 
-    WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP 
-    HAS BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO 
-    THE FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL 
-    CLAIMS IN ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT 
-    OF FEES, IF ANY, THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS 
-    SOFTWARE.
+    THIRD PARTY SOFTWARE:  Notwithstanding anything to the contrary, any 
+    third party software accompanying this software is subject to the terms 
+    and conditions of the third party's license agreement.  To the extent 
+    required by third party licenses covering such third party software, 
+    the terms of such license will apply in lieu of the terms provided in 
+    this notice or applicable license.  To the extent the terms of such 
+    third party licenses prohibit any of the restrictions described here, 
+    such restrictions will not apply to such third party software.
 */
 
 #ifndef HLVD_H
@@ -72,6 +81,7 @@
    This defines trip point values.
 
  */
+
 typedef enum
 {
     HLVD_TRIP_POINT_1p81V =  0, //0x0
@@ -125,7 +135,7 @@ typedef enum
       while(1)
       {
          //Polling
-         HLVD_Tasks();
+          HLVD_Tasks();
       }
     }
     void HLVD_TripDetectionCallback(void)
@@ -161,7 +171,7 @@ void HLVD_Initialize(void);
       HLVD_TripPointSetup(EXCEED_TRIP_POINT,
         HLVD_TRIP_POINT_1p85v);
       //Enable the module
-      HLVD_Enable();
+       HLVD_Enable();
       //check if reference voltage is stable 
       while(!HLVD_IsBandGapVoltageStable());
       while(1)
@@ -221,7 +231,6 @@ void HLVD_Disable(void);
 */
 bool HLVD_IsBandGapVoltageStable(void);
 
-
 /**
   @Summary
     This function sets the Positive, Negative voltage trip and trip value
@@ -241,9 +250,7 @@ bool HLVD_IsBandGapVoltageStable(void);
   @Example
    Refer the HLVD_Enable code example
 */
-void HLVD_TripPointSetup(bool Negative_Trip,bool Positive_Trip,
-        HLVD_TRIP_POINTS trip_points);
-
+void HLVD_TripPointSetup(bool Negative_Trip, bool Positive_Trip, HLVD_TRIP_POINTS trip_points);
 
 /**
   @Summary
@@ -266,6 +273,20 @@ void HLVD_TripPointSetup(bool Negative_Trip,bool Positive_Trip,
 */
 bool HLVD_OutputStatusGet(void);
 
+/**
+  @Summary
+    Sets HLVD Callback Handler
+
+  @Description
+    This routine is used to set the callback handler for the HLVD interrupt flag.
+
+  @Returns
+    None
+
+  @Param
+    Callback Function to be called
+*/
+void HLVD_CallbackRegister(void (* CallbackHandler)(void));
 
 /**
   @Summary
@@ -281,9 +302,7 @@ bool HLVD_OutputStatusGet(void);
   @Param
     None
 */
-void HLVD_ISR(void); 
-
-
+void HLVD_ISR(void);
 #ifdef __cplusplus  // Provide C++ Compatibility
 }
 #endif
@@ -292,4 +311,3 @@ void HLVD_ISR(void);
 /**
  End of File
 */
-
