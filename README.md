@@ -70,24 +70,25 @@ Data Visualizer is a software tool used to process and visualize data. The Data 
 ### System Configuration
 
 Configure the system clock to 1 MHz by going to Project Resources → System → Clock Control. Select HFINTOSC for Clock Source, set the frequency to 1 MHz, and the clock divider to 1, as shown in Figure 3.
+
 ![Clock Control](images/clock_control.png)
 
-			Figure 3: Clock Control
+		Figure 3: Clock Control
 Click on the Configuration Bits tab under Project Resources → System tab for changing the default configuration bit settings.
 
 Select "WDT Operating Mode" from CONFIG3L register as "WDT Disabled" to disable the watchdog timer.
 
 ![configuration_bits](images/configuration_bits_wdt.png)
 
-Figure 4: Configuration Bits
+        Figure 4: Configuration Bits
 
-*  **Add peripherals to the project**
+### Add peripherals to the project
 
 Add HLVD and EUSART2 peripherals to the project from Device Resources → Drivers.
 
-![peripherals](images/Peripherals.png)
+![peripherals](images/peripherals.png)
 
-			Figure 5: Peripherals
+        Figure 5: Peripherals
 
 ### HLVD Configuration
 
@@ -99,7 +100,7 @@ Configurations to be done for HLVD peripheral:
 
 ![HLVD_Configuration](images/hlvd.png)
 
-			Figure 6: HLVD Configuration
+		Figure 6: HLVD Configuration
 
 ###         EUSART2 Configuration
 In this demo, EUSART2 is used to transmit data on the terminal window upon detection of the low/high supply voltage using the HLVD module.
@@ -112,7 +113,7 @@ Configurations to be done for EUSART2 peripheral:
 
 ![EUSART_2_Configuration ](images/eusart2.png)
 
-			Figure 7: EUSART 2 Configuration                                                                       
+		Figure 7: EUSART 2 Configuration                                                                       
 
 ### Pin Configuration
 The I/O pin mapping of the PIC18F47Q10 MCU for the EUSART2 interface and on-board LED is shown in the Figure 8.
@@ -123,13 +124,14 @@ Configurations to be done in the Pin Manager grid view window:
 
 ![Pin Manager](images/pin_manager_grid_view.png)
 
-			Figure 8: Pin Manager grid view
+		Figure 8: Pin Manager grid view
 
 Add custom name to the RE0 output pin as LED using Pin Manager. Check the Start High check box for LED pin RE0 for turning OFF the LED during initialization.
 
 ![Pin Module](images/Pin_Manager.png)
 
-			Figure 9: Pin Manager
+		Figure 9: Pin Manager
+			
 **Generate the Project files**
 * Click the Generate button next to the project Resources to generate initializers and drivers for configured peripherals.
 
@@ -141,11 +143,11 @@ Add custom name to the RE0 output pin as LED using Pin Manager. Check the Start 
 
 ![VTG_and_VOFF_pins](images/VTG_and_VOFF_pins.png)
 
-			Figure 10: VTG and VOFF pins
+		Figure 10: VTG and VOFF pins
 
 ![Hardware_setup](images/Hardware_setup.jpg)
 
-			Figure 11: Hardware setup
+		Figure 11: Hardware setup
 
 4.	Connect a micro USB cable from micro USB socket on the Curiosity nano board to the PC for programming the board and viewing the messages on the PC terminal window.
 
@@ -156,7 +158,7 @@ Open the Terminal window in Data Visualizer. Use 9600 baud rate. Any other termi
 
 ![program](images/program.png)
 
-            Figure 12: Programming the device
+        Figure 12: Programming the device
 
 
 # Demo Operation:
