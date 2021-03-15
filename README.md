@@ -87,7 +87,7 @@ Add HLVD and EUSART2 peripherals to the project from Device Resources → Driver
 
 ![peripherals](images/Peripherals.png)
 
-Figure 5: Peripherals
+			Figure 5: Peripherals
 
 ### HLVD Configuration
 
@@ -104,10 +104,11 @@ Configurations to be done for HLVD peripheral:
 ###         EUSART2 Configuration
 In this demo, EUSART2 is used to transmit data on the terminal window upon detection of the low/high supply voltage using the HLVD module.
 Configurations to be done for EUSART2 peripheral:
-* Make sure that EUSART2 is enabled from "Serial Port Enable" EUSART settings
-* Enable Transmit
-* Disable Receive by setting "Receive Enable" slider button to OFF state.
 * Enable Redirect STDIO to USART by setting "Redirect STDIO to USART" slider button to ON state.
+* Set baud rate as 9600.
+* Disable Receive by setting "Receive Enable" slider button to OFF state.
+* Enable Transmit.
+* Make sure that EUSART2 is enabled from EUSART settings "Serial Port Enable".
 
 ![EUSART_2_Configuration ](images/eusart2.png)
 
@@ -124,7 +125,7 @@ Configurations to be done in the Pin Manager grid view window:
 
 			Figure 8: Pin Manager grid view
 
-Add custom name to the RE0 output pin as LED using Pin Manager. Check the Start High check box for LED pin PE0 for turning OFF the LED during initialization.
+Add custom name to the RE0 output pin as LED using Pin Manager. Check the Start High check box for LED pin RE0 for turning OFF the LED during initialization.
 
 ![Pin Module](images/Pin_Manager.png)
 

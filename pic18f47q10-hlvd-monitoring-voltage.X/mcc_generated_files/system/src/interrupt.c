@@ -98,11 +98,7 @@ void __interrupt() INTERRUPT_InterruptManager (void)
     // interrupt handler
     if(INTCONbits.PEIE == 1)
     {
-        if(PIE0bits.IOCIE == 1 && PIR0bits.IOCIF == 1)
-        {
-            PIN_MANAGER_IOC();
-        } 
-        else if(PIE2bits.HLVDIE == 1 && PIR2bits.HLVDIF == 1)
+        if(PIE2bits.HLVDIE == 1 && PIR2bits.HLVDIF == 1)
         {
             HLVD_ISR();
         } 

@@ -4,11 +4,7 @@
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
             <name>pic18f47q10-hlvd-monitoring-voltage</name>
-            <name>ccl-hlvd-q10-1-37-10</name>
-            <name>ccl-hlvd-q10-1-37-7</name>
-            <name>ccl-hlvd-q10-1-37-4</name>
-            <name>ccl-crc-q10-1-37-4</name>
-            <creation-uuid>56a9927f-1f2b-48ab-83f0-56e1eb715f9b</creation-uuid>
+            <creation-uuid>54c5ab83-d643-45e4-9b6b-5d993864ab5e</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>
             <cpp-extensions/>

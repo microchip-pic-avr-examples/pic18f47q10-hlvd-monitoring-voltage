@@ -56,8 +56,8 @@ Copyright (c) [2012-2020] Microchip Technology Inc.
 // Configuration bits: selected in the GUI
 
 //CONFIG1L
-#pragma config FEXTOSC = OFF     // External Oscillator Mode Selection->Oscillator not enabled
-#pragma config RSTOSC = HFINTOSC_1MHZ     // Power-Up Default Value for COSC->HFINTOSC with HFFRQ = 4 MHz and CDIV = 4:1
+#pragma config FEXTOSC = ECH     // External Oscillator Mode Selection->EC (external clock) above 8 MHz; PFM set to high power
+#pragma config RSTOSC = EXTOSC     // Power-Up Default Value for COSC->EXTOSC operating per FEXTOSC bits (device manufacturing default)
 
 //CONFIG1H
 #pragma config CLKOUTEN = OFF     // Clock Out Enable->CLKOUT function is disabled
