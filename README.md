@@ -54,7 +54,7 @@ Microchip’s free MPLAB X IDE, compiler and MPLAB Code Configurator (MCC) graph
 * [MPLAB® X IDE v5.45](https://www.microchip.com/mplab/mplab-x-ide)
 * [XC8 Compiler v2.31](https://www.microchip.com/mplab/compilers)
 * [MPLAB® Code Configurator (MCC) v4.1.0](https://www.microchip.com/mplab/mplab-code-configurator)
-* [MPLAB® Code Configurator Library (CCL) v1.37.10](https://www.microchip.com/mplab/mplab-code-configurator)
+* [MPLAB® Code Configurator Library (CCL) v1.37.13](https://www.microchip.com/mplab/mplab-code-configurator)
 * [MCC Device Libraries PIC10 / PIC12 / PIC16 / PIC18  MCUs v1.81.7](https://www.microchip.com/mplab/mplab-code-configurator)
 * [Microchip PIC18F-Q Series Device Support 1.9.175](https://packs.download.microchip.com/)
 * [Data Visualizer](https://www.microchip.com/en-us/development-tools-tools-and-software/embedded-software-center/mplab-data-visualizer)
@@ -131,7 +131,7 @@ Add custom name to the RE0 output pin as LED using Pin Manager. Check the Start 
 ![Pin Module](images/Pin_Manager.png)
 
 		Figure 9: Pin Manager
-			
+
 **Generate the Project files**
 * Click the Generate button next to the project Resources to generate initializers and drivers for configured peripherals.
 
