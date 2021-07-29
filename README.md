@@ -20,10 +20,10 @@ The HLVD is a necessary power supply monitoring feature in numerous battery powe
 
 ![Table HLVD sel](images/Table_HLVD_SEL.png)
 
-			Table 1:HLVD Trip point Voltages
+			Table 1: HLVD Trip point Voltages
 
 
-***Note: Refer the device datasheet for the typical Trip Point Voltage (V) settings. And refer MCC configuration GUI of HLVD peripheral for minimum and maximum Trip Point Voltage (V) settings.***
+***Note: Refer the device data sheet for the typical Trip Point Voltage (V) settings. And refer MCC configuration GUI of HLVD peripheral for minimum and maximum Trip Point Voltage (V) settings.***
 
 # Demo Description
 
@@ -33,9 +33,9 @@ The HLVD is a necessary power supply monitoring feature in numerous battery powe
 
 * PIC18F47Q10 Curiosity Nano board and external power supply are used to demonstrate the configuration and usage of the HLVD module. HLVD is used to monitor the microcontroller supply voltage for low and high voltage detect.
 * After power up the trip-point voltage of HLVD is configures to 3.15V to detect low supply voltage.    
-* If the supply voltage is decreased below the setpoint the HLVD module generates interrupt. EUSART is used to send messages   to the terminal window that low voltage is detected.
+* If the supply voltage is decreased below the set-point the HLVD module generates interrupt. EUSART is used to send messages   to the terminal window that low voltage is detected.
 * Once the low voltage is detected the trip point is changed to 4.35V to detect high supply voltage using HLVD.
-* If the supply voltage is increased, above the setpoint the HLVD module generates interrupt. EUSART is used to send a message to the terminal that high voltage is detected.
+* If the supply voltage is increased, above the set-point the HLVD module generates interrupt. EUSART is used to send a message to the terminal that high voltage is detected.
 * After detection of the high supply voltage, the set point is changed back to 3.15V to detect low supply voltage. The process is repeated.
 
 # Hardware used
@@ -49,21 +49,21 @@ With full program and debug capabilities, the PIC18F47Q10 Curiosity Nano evaluat
 
 # Software Tools:
 
-Microchip’s free MPLAB X IDE, compiler and MPLAB Code Configurator (MCC) graphical code generator are used throughout the application firmware development to provide easy and hassle-free user experience. Following are the tool versions used for this demo application:
+Microchip’s free MPLAB® X IDE, compiler and MPLAB® Code Configurator (MCC) graphical code generator are used throughout the application firmware development to provide easy and hassle-free user experience. Following are the tool versions used for this demo application:
 
-* [MPLAB® X IDE v5.45](https://www.microchip.com/mplab/mplab-x-ide)
-* [XC8 Compiler v2.31](https://www.microchip.com/mplab/compilers)
-* [MPLAB® Code Configurator (MCC) v4.1.0](https://www.microchip.com/mplab/mplab-code-configurator)
-* [MPLAB® Code Configurator Library (CCL) v1.37.13](https://www.microchip.com/mplab/mplab-code-configurator)
-* [MCC Device Libraries PIC10 / PIC12 / PIC16 / PIC18  MCUs v1.81.7](https://www.microchip.com/mplab/mplab-code-configurator)
-* [Microchip PIC18F-Q Series Device Support 1.9.175](https://packs.download.microchip.com/)
-* [Data Visualizer](https://www.microchip.com/en-us/development-tools-tools-and-software/embedded-software-center/mplab-data-visualizer)
+* MPLAB® X IDE [v5.50 or newer](https://www.microchip.com/mplab/mplab-x-ide)
+* XC8 Compiler [v2.32 or newer](https://www.microchip.com/mplab/compilers)
+* MPLAB® Code Configurator (MCC) [v4.2.3 or newer](https://www.microchip.com/mplab/mplab-code-configurator)
+* MPLAB®  Code Configurator Library (CCL) [v1.84.5 or newer](https://www.microchip.com/mplab/mplab-code-configurator)
+* MCC Device Libraries PIC10 / PIC12 / PIC16 / PIC18  MCUs [v1.81.7 or newer](https://www.microchip.com/mplab/mplab-code-configurator)
+* Microchip PIC18F-Q Series Device Support [1.11.185 or newer](https://packs.download.microchip.com/)
+
 
 ***Note: For running the demo, the installed tool versions should be the same or later. This example is not tested with previous versions.***
 
 
 ## Data Visualizer:
-Data Visualizer is a software tool used to process and visualize data. The Data Visualizer can receive data from various sources such as the Embedded Debugger Data Gateway Interface (DGI) and COM ports. Data Visualizer is made up of several modules such as Graph, Oscilloscope, Terminal, Power debugging, Custom dashboard etc. In this example, Standalone data visualizer tool is used to receive messages from the Curiosity Nano board. The terminal window is used to display the messages upon detection of low or high supply voltage using HLVD. For more details on the Data Visualizer tool refer to the [Data Visualizer user guide](https://www.microchip.com/DS40001903).
+Data Visualizer is a software tool used to process and visualize data. The Data Visualizer can receive data from various sources such as the Embedded Debugger Data Gateway Interface (DGI) and COM ports. Data Visualizer is made up of several modules such as Graph, Oscilloscope, Terminal, Power debugging, Custom dashboard etc. In this example, MPLAB® data visualizer tool is used to receive messages from the Curiosity Nano board. The terminal window is used to display the messages upon detection of low or high supply voltage using HLVD. For more details on the Data Visualizer tool refer to the [Data Visualizer user guide](https://www.microchip.com/DS40001903).
 
 # Demo realization
 ## Peripherals Configuration using MCC
@@ -74,13 +74,7 @@ Configure the system clock to 1 MHz by going to Project Resources → System →
 ![Clock Control](images/clock_control.png)
 
 		Figure 3: Clock Control
-Click on the Configuration Bits tab under Project Resources → System tab for changing the default configuration bit settings.
 
-Select "WDT Operating Mode" from CONFIG3L register as "WDT Disabled" to disable the watchdog timer.
-
-![configuration_bits](images/configuration_bits_wdt.png)
-
-        Figure 4: Configuration Bits
 
 ### Add peripherals to the project
 
@@ -88,7 +82,7 @@ Add HLVD and EUSART2 peripherals to the project from Device Resources → Driver
 
 ![peripherals](images/peripherals.png)
 
-        Figure 5: Peripherals
+        Figure 4: Peripherals
 
 ### HLVD Configuration
 
@@ -100,7 +94,7 @@ Configurations to be done for HLVD peripheral:
 
 ![HLVD_Configuration](images/hlvd.png)
 
-		Figure 6: HLVD Configuration
+		Figure 5: HLVD Configuration
 
 ###         EUSART2 Configuration
 In this demo, EUSART2 is used to transmit data on the terminal window upon detection of the low/high supply voltage using the HLVD module.
@@ -113,24 +107,24 @@ Configurations to be done for EUSART2 peripheral:
 
 ![EUSART_2_Configuration ](images/eusart2.png)
 
-		Figure 7: EUSART 2 Configuration                                                                       
+		Figure 6: EUSART 2 Configuration                                                                       
 
 ### Pin Configuration
-The I/O pin mapping of the PIC18F47Q10 MCU for the EUSART2 interface and on-board LED is shown in the Figure 8.
-Configurations to be done in the Pin Manager grid view window:
+The I/O pin mapping of the PIC18F47Q10 MCU for the EUSART2 interface and on-board LED is shown in the Figure 7.
+Configurations to be done in the Pins grid view window:
 * Select pin RD0 as an EUSART2 TX2 pin.
 * Pin RB7 for EUSART2 RX2 can be deselected.
 * Configure Pin RE0 as output for connecting to LED0.
 
-![Pin Manager](images/pin_manager_grid_view.png)
+![Pins Grid View](images/pins_grid_view.png)
 
-		Figure 8: Pin Manager grid view
+		Figure 7: Pins grid view
 
-Add custom name to the RE0 output pin as LED using Pin Manager. Check the Start High check box for LED pin RE0 for turning OFF the LED during initialization.
+Add custom name to the RE0 output pin as LED using Pins window. Check the Start High check box for LED pin RE0 for turning OFF the LED during initialization.
 
-![Pin Module](images/Pin_Manager.png)
+![Pins](images/Pins.png)
 
-		Figure 9: Pin Manager
+		Figure 8: Pins 
 
 **Generate the Project files**
 * Click the Generate button next to the project Resources to generate initializers and drivers for configured peripherals.
@@ -138,16 +132,16 @@ Add custom name to the RE0 output pin as LED using Pin Manager. Check the Start 
 ### Hardware Setup
  Follow the steps for Hardware setup:
 1.	To power the PIC18F47Q10 device using external power supply the VOFF pin on the curiosity nano board should be connected to ground. Connect the pins VOFF pin to GND pin using the jumper.  Refer Figure 10 for VOFF pin.
-2.	Connect external power supply to VTG and GND pins of the curiosity nano board to power the PIC18F47Q10 device using external power supply. Make sure external supply voltage is 3.3V. Refer Figure 10 for VTG pin.
-3.	Setup the hardware, as shown in Figure 11.
+2.	Connect external power supply to VTG and GND pins of the curiosity nano board to power the PIC18F47Q10 device using external power supply. Make sure external supply voltage is 3.3V. Refer Figure 9 for VTG pin.
+3.	Setup the hardware, as shown in Figure 10.
 
 ![VTG_and_VOFF_pins](images/VTG_and_VOFF_pins.png)
 
-		Figure 10: VTG and VOFF pins
+		Figure 9: VTG and VOFF pins
 
 ![Hardware_setup](images/Hardware_setup.jpg)
 
-		Figure 11: Hardware setup
+		Figure 10: Hardware setup
 
 4.	Connect a micro USB cable from micro USB socket on the Curiosity nano board to the PC for programming the board and viewing the messages on the PC terminal window.
 
@@ -158,8 +152,7 @@ Open the Terminal window in Data Visualizer. Use 9600 baud rate. Any other termi
 
 ![program](images/program.png)
 
-        Figure 12: Programming the device
-
+        Figure 11: Programming the device
 
 # Demo Operation:
 * Upon power on the trip-point of HLVD is set at 3.15V to detect low supply voltage.   
@@ -167,13 +160,13 @@ Open the Terminal window in Data Visualizer. Use 9600 baud rate. Any other termi
 
 ![Initial_message](images/Initial_message_on_the_terminal_window.png)
 
-		Figure 13: Initial message on the terminal window
+		Figure 12: Initial message on the terminal window
 
 * If the supply voltage is decreased below the trip point i.e 3.15 V, the HLVD module generates interrupt. Observe the message on the terminal window that low voltage is detected.
 
 ![Message_after_detecting_low_voltage](images/Message_after_detecting_low_voltage.png)
 
-		Figure 14: Message after detecting low voltage
+		Figure 13: Message after detecting low voltage
 
 * Once the low voltage is detected the HLVD configuration is changed to detect high supply voltage. The trip point is changed to 4.35V and INTH bit of HLVDCON0 register is set.
 * Start increasing the supply voltage.
@@ -181,9 +174,9 @@ Open the Terminal window in Data Visualizer. Use 9600 baud rate. Any other termi
 
 ![Message_after_detecting_high_voltage](images/Message_after_detecting_high_voltage.png)
 
-		Figure 15:  Message after detecting high voltage
+		Figure 14:  Message after detecting high voltage
 
 * After detection of the high supply voltage, the trip point is changed back to 3.15V and INTL bit is set to detect low supply voltage. The process is repeated.
 
 # Conclusion
-High/Low-Voltage Detect (HLVD) module of a PIC microcontroller is a valuable feature for monitoring the supply voltage of a microcontroller that is directly battery powered. The usage of HLVD module doesn’t require any extra port pin for supply voltage monitoring.
+High/Low-Voltage Detect (HLVD) module of a PIC® microcontroller is a valuable feature for monitoring the supply voltage of a microcontroller that is directly battery powered. The usage of HLVD module doesn’t require any extra port pin for supply voltage monitoring.
