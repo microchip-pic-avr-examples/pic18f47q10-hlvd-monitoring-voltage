@@ -67,11 +67,11 @@ void PIN_MANAGER_Initialize(void)
     /**
     ANSELx registers
     */
-    ANSELA = 0x0;
-    ANSELB = 0x0;
-    ANSELC = 0x0;
-    ANSELD = 0x0;
-    ANSELE = 0x0;
+    ANSELA = 0xFF;
+    ANSELB = 0xFF;
+    ANSELC = 0xFF;
+    ANSELD = 0xFE;
+    ANSELE = 0x6;
 
     /**
     WPUx registers
@@ -111,7 +111,7 @@ void PIN_MANAGER_Initialize(void)
     /**
     PPS registers
     */
-    RD0PPS = 0xB;  //RD0->EUSART2:TX2;
+    RD0PPS = 0x0B;  //RD0->EUSART2:TX2;
 
    /**
     IOCx registers 

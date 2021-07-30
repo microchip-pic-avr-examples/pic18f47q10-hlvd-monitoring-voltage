@@ -193,6 +193,8 @@
         <property key="communication.interface"
                   value="${communication.interface.default}"/>
         <property key="communication.speed" value="${communication.speed.default}"/>
+        <property key="debugoptions.debug-startup" value="Use system settings"/>
+        <property key="debugoptions.reset-behaviour" value="Use system settings"/>
         <property key="debugoptions.useswbreakpoints" value="false"/>
         <property key="firmware.path"
                   value="Press to browse for a specific firmware version"/>
@@ -215,6 +217,8 @@
         <property key="memories.programmemory.ranges" value="0-1ffff"/>
         <property key="memories.rww" value="true"/>
         <property key="poweroptions.powerenable" value="false"/>
+        <property key="programmerToGoFilePath"
+                  value="D:/AVR_Apps/metadata_CCL/CCL_HLVD/bitbucket/pic18f47q10-hlvd-monitoring-voltage/pic18f47q10-hlvd-monitoring-voltage.X/debug/free/pic18f47q10-hlvd-monitoring-voltage_ptg"/>
         <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.preservedataflash" value="false"/>
         <property key="programoptions.preservedataflash.ranges"
@@ -280,7 +284,7 @@
         <property key="memories.rww" value="true"/>
         <property key="poweroptions.powerenable" value="false"/>
         <property key="programmerToGoFilePath"
-                  value="D:/AVR_Apps/metadata_CCL/CCL_HLVD/bitbucket/pic18f47q10-hlvd-monitoring-voltage/pic18f47q10-hlvd-monitoring-voltage.X/debug/free/pic18f47q10-hlvd-monitoring-voltage_ptg"/>
+                  value="D:/AVR_Apps/metadata_CCL/CCL_HLVD/V2.0.1/pic18f47q10-hlvd-monitoring-voltage/pic18f47q10-hlvd-monitoring-voltage.X/debug/free/pic18f47q10-hlvd-monitoring-voltage_ptg"/>
         <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.preservedataflash" value="false"/>
         <property key="programoptions.preservedataflash.ranges"
@@ -448,6 +452,8 @@
         <property key="memories.programmemory.ranges" value="0-1ffff"/>
         <property key="memories.rww" value="true"/>
         <property key="poweroptions.powerenable" value="false"/>
+        <property key="programmerToGoFilePath"
+                  value="D:/AVR_Apps/metadata_CCL/CCL_HLVD/bitbucket/pic18f47q10-hlvd-monitoring-voltage/pic18f47q10-hlvd-monitoring-voltage.X/debug/pro/pic18f47q10-hlvd-monitoring-voltage_ptg"/>
         <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.preservedataflash" value="false"/>
         <property key="programoptions.preservedataflash.ranges"
@@ -513,7 +519,7 @@
         <property key="memories.rww" value="true"/>
         <property key="poweroptions.powerenable" value="false"/>
         <property key="programmerToGoFilePath"
-                  value="D:/AVR_Apps/metadata_CCL/CCL_HLVD/bitbucket/pic18f47q10-hlvd-monitoring-voltage/pic18f47q10-hlvd-monitoring-voltage.X/debug/pro/pic18f47q10-hlvd-monitoring-voltage_ptg"/>
+                  value="D:/AVR_Apps/metadata_CCL/CCL_HLVD/V2.0.1/pic18f47q10-hlvd-monitoring-voltage/pic18f47q10-hlvd-monitoring-voltage.X/debug/pro/pic18f47q10-hlvd-monitoring-voltage_ptg"/>
         <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.preservedataflash" value="false"/>
         <property key="programoptions.preservedataflash.ranges"
