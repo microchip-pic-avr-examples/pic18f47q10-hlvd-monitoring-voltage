@@ -1,58 +1,33 @@
 /**
-  EUSART2 Generated Driver API Header File
-
-  @Company
-    Microchip Technology Inc.
-
-  @File Name
-    eusart2.h
-
-  @Summary
-    This is the generated header file for the EUSART2 driver using CCL
-
-  @Description
-    This header file provides APIs for driver for EUSART2.
-    Generation Information :
-        Product Revision  :  CCL - 1.8.2
-        Device            :  PIC18F47Q43
-        Driver Version    :  2.1.0
-    The generated drivers are tested against the following:
-        Compiler          :  XC8 v2.2
-        MPLAB 	          :  Standalone
+ * EUSART2 Generated Driver API Header File
+ * 
+ * @file eusart2.h
+ * 
+ * @defgroup eusart2 EUSART2
+ * 
+ * @brief This file contains API prototypes and other datatypes for EUSART2 module.
+ *
+ * @version EUSART2 Driver Version 3.0.0
 */
-
 /*
-Copyright (c) [2012-2020] Microchip Technology Inc.  
+© [2023] Microchip Technology Inc. and its subsidiaries.
 
-    All rights reserved.
-
-    You are permitted to use the accompanying software and its derivatives 
-    with Microchip products. See the Microchip license agreement accompanying 
-    this software, if any, for additional info regarding your rights and 
-    obligations.
-    
-    MICROCHIP SOFTWARE AND DOCUMENTATION ARE PROVIDED "AS IS" WITHOUT 
-    WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT 
-    LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE, NON-INFRINGEMENT 
-    AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT WILL MICROCHIP OR ITS
-    LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT, NEGLIGENCE, STRICT 
-    LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER LEGAL EQUITABLE 
-    THEORY FOR ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES INCLUDING BUT NOT 
-    LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES, 
-    OR OTHER SIMILAR COSTS. 
-    
-    To the fullest extend allowed by law, Microchip and its licensors 
-    liability will not exceed the amount of fees, if any, that you paid 
-    directly to Microchip to use this software. 
-    
-    THIRD PARTY SOFTWARE:  Notwithstanding anything to the contrary, any 
-    third party software accompanying this software is subject to the terms 
-    and conditions of the third party's license agreement.  To the extent 
-    required by third party licenses covering such third party software, 
-    the terms of such license will apply in lieu of the terms provided in 
-    this notice or applicable license.  To the extent the terms of such 
-    third party licenses prohibit any of the restrictions described here, 
-    such restrictions will not apply to such third party software.
+    Subject to your compliance with these terms, you may use Microchip 
+    software and any derivatives exclusively with Microchip products. 
+    You are responsible for complying with 3rd party license terms  
+    applicable to your use of 3rd party software (including open source  
+    software) that may accompany Microchip software. SOFTWARE IS ?AS IS.? 
+    NO WARRANTIES, WHETHER EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS 
+    SOFTWARE, INCLUDING ANY IMPLIED WARRANTIES OF NON-INFRINGEMENT,  
+    MERCHANTABILITY, OR FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT 
+    WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE, 
+    INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY 
+    KIND WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF 
+    MICROCHIP HAS BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE 
+    FORESEEABLE. TO THE FULLEST EXTENT ALLOWED BY LAW, MICROCHIP?S 
+    TOTAL LIABILITY ON ALL CLAIMS RELATED TO THE SOFTWARE WILL NOT 
+    EXCEED AMOUNT OF FEES, IF ANY, YOU PAID DIRECTLY TO MICROCHIP FOR 
+    THIS SOFTWARE.
 */
 
 #ifndef EUSART2_H
@@ -60,368 +35,273 @@ Copyright (c) [2012-2020] Microchip Technology Inc.
 
 /**
   Section: Included Files
-*/
+ */
 
-#include <xc.h>
 #include <stdbool.h>
 #include <stdint.h>
-#include "uart_interface.h"
 #include <stdio.h>
+#include "../system/system.h"
+#include "uart_drv_interface.h"
+
+#ifdef __cplusplus  // Provide C++ Compatibility
+
+    extern "C" {
+
+#endif
+
+
+#define UART2_interface UART2
+
+
+#define UART2_Initialize     EUSART2_Initialize
+#define UART2_Deinitialize   EUSART2_Deinitialize
+#define UART2_Write          EUSART2_Write
+#define UART2_Read           EUSART2_Read
+#define UART2__IsRxReady     EUSART2_IsRxReady
+#define UART2_IsTxReady      EUSART2_IsTxReady
+#define UART2_IsTxDone       EUSART2_IsTxDone
+
+#define UART2_TransmitEnable       EUSART2_TransmitEnable
+#define UART2_TransmitDisable      EUSART2_TransmitDisable
+#define UART2_AutoBaudSet          EUSART2_AutoBaudSet
+#define UART2_AutoBaudQuery        EUSART2_AutoBaudQuery
+#define UART2_BRGCountSet                (NULL)
+#define UART2_BRGCountGet                (NULL)
+#define UART2_BaudRateSet                (NULL)
+#define UART2_BaudRateGet                (NULL)
+#define UART2__AutoBaudEventEnableGet    (NULL)
+#define UART2_ErrorGet             EUSART2_ErrorGet
+
+#define UART2_TxCompleteCallbackRegister     (NULL)
+#define UART2_RxCompleteCallbackRegister      (NULL)
+#define UART2_TxCollisionCallbackRegister  (NULL)
+#define UART2_FramingErrorCallbackRegister EUSART2_FramingErrorCallbackRegister
+#define UART2_OverrunErrorCallbackRegister EUSART2_OverrunErrorCallbackRegister
+#define UART2_ParityErrorCallbackRegister  (NULL)
+#define UART2_EventCallbackRegister        (NULL)
+
 
 /**
-  Section: Macro Declarations
-*/
-
-#define EUSART2_DataReady  (EUSART2_IsRxReady())
-
-/**
-  Section: Data Type Definitions
-*/
-
+ @ingroup eusart2
+ @struct eusart2_status_t
+ @breif This is a structre defined for errors in reception of data.
+ */
 typedef union {
     struct {
-        unsigned perr : 1;
-        unsigned ferr : 1;
-        unsigned oerr : 1;
-        unsigned reserved : 5;
+        uint8_t perr : 1;     /**<This is a bit field for Parity Error status*/
+        uint8_t ferr : 1;     /**<This is a bit field for Framing Error status*/
+        uint8_t oerr : 1;     /**<This is a bit field for Overfrun Error status*/
+        uint8_t reserved : 5; /**<Reserved*/
     };
-    uint8_t status;
+    size_t status;            /**<Group byte for status errors*/
 }eusart2_status_t;
 
-//*********************************************************************************************************
+
+
 /**
- * @deprecated
- * Deprecated APIs start
+ Section: Data Type Definitions
  */
-//*********************************************************************************************************
-
-bool __attribute__(( deprecated )) EUSART2_is_tx_ready(void);
-bool __attribute__(( deprecated )) EUSART2_is_rx_ready(void);
-bool __attribute__(( deprecated )) EUSART2_is_tx_done(void);
-eusart2_status_t EUSART2_get_last_status(void);
-
-/*************************************************************************************************************
- * Deprecated APIs end
- *************************************************************************************************************/
-
-extern const struct UART_INTERFACE EUSART2_Interface;
 
 /**
-  Section: EUSART2 APIs
-*/
+ * @ingroup eusart2
+ * @brief External object for eusart2_interface.
+ */
+extern const uart_drv_interface_t UART2;
 
 /**
-  @Summary
-    Initialization routine that takes inputs from the EUSART2 GUI.
-
-  @Description
-    This routine initializes the EUSART2 driver.
-    This routine must be called before any other EUSART2 routine is called.
-
-  @Preconditions
-    None
-
-  @Param
-    None
-
-  @Returns
-    None
-
-  @Comment
-    
-*/
+ * @ingroup eusart2
+ * @brief This API initializes the EUSART2 driver.
+ *        This routine initializes the EUSART2 module.
+ *        This routine must be called before any other EUSART2 routine is called.
+ *        This routine should only be called once during system initialization.
+ * @param None.
+ * @return None.
+ */
 void EUSART2_Initialize(void);
 
 /**
-  @Summary
-    Checks if the EUSART2 transmitter is ready to transmit data
-
-  @Description
-    This routine checks if EUSART2 transmitter is ready 
-    to accept and transmit data byte
-
-  @Preconditions
-    EUSART2_Initialize() function should have been called
-    before calling this function.
-    EUSART2 transmitter should be enabled before calling 
-    this function
-
-  @Param
-    None
-
-  @Returns
-    Status of EUSART2 transmitter
-    TRUE: EUSART2 transmitter is ready
-    FALSE: EUSART2 transmitter is not ready
-    
-  @Example
-    <code>
-    void main(void)
-    {
-        volatile uint8_t rxData;
-        
-        // Initialize the device
-        SYSTEM_Initialize();
-        
-        while(1)
-        {
-            // Logic to echo received data
-            if(EUSART2_IsRxReady())
-            {
-                rxData = UART1_Read();
-                if(EUSART2_IsTxReady())
-                {
-                    EUSART2Write(rxData);
-                }
-            }
-        }
-    }
-    </code>
-*/
-bool EUSART2_IsTxReady(void);
+ * @ingroup eusart2
+ * @brief This API Deinitializes the EUSART2 driver.
+ *        This routine disables the EUSART2 module.
+ * @param None.
+ * @return None.
+ */
+void EUSART2_Deinitialize(void);
 
 /**
-  @Summary
-    Checks if the EUSART2 receiver ready for reading
+ * @ingroup eusart2
+ * @brief This API enables the EUSART2 module.     
+ * @param None.
+ * @return None.
+ */
+inline void EUSART2_Enable(void);
 
-  @Description
-    This routine checks if EUSART2 receiver has received data 
-    and ready to be read
+/**
+ * @ingroup eusart2
+ * @brief This API disables the EUSART2 module.
+ * @param None.
+ * @return None.
+ */
+inline void EUSART2_Disable(void);
 
-  @Preconditions
-    EUSART2_Initialize() function should be called
-    before calling this function
-    EUSART2 receiver should be enabled before calling this 
-    function
+/**
+ * @ingroup eusart2
+ * @brief This API enables the EUSART2 transmitter.
+ *        EUSART2 should also be enable to send bytes over TX pin.
+ * @param None.
+ * @return None.
+ */
+inline void EUSART2_TransmitEnable(void);
 
-  @Param
-    None
+/**
+ * @ingroup eusart2
+ * @brief This API disables the EUSART2 transmitter.
+ * @param None.
+ * @return None.
+ */
+inline void EUSART2_TransmitDisable(void);
 
-  @Returns
-    Status of EUSART2 receiver
-    TRUE: EUSART2 receiver is ready for reading
-    FALSE: EUSART2 receiver is not ready for reading
-    
-  @Example
-    <code>
-    void main(void)
-    {
-        volatile uint8_t rxData;
-        
-        // Initialize the device
-        SYSTEM_Initialize();
-        
-        while(1)
-        {
-            // Logic to echo received data
-            if(EUSART2_IsRxReady())
-            {
-                rxData = UART1_Read();
-                if(EUSART2_IsTxReady())
-                {
-                    EUSART2_Write(rxData);
-                }
-            }
-        }
-    }
-    </code>
-*/
+/**
+ * @ingroup eusart2
+ * @brief This API enables the EUSART2 Receiver.
+ *        EUSART2 should also be enable to receive bytes over RX pin.
+ * @param None.
+ * @return None.
+ */
+inline void EUSART2_ReceiveEnable(void);
+
+/**
+ * @ingroup eusart2
+ * @brief This API disables the EUSART2 Receiver.
+ * @param None.
+ * @return None.
+ */
+inline void EUSART2_ReceiveDisable(void);
+
+
+/**
+ * @ingroup eusart2
+ * @brief This API enables the EUSART2 send break control.
+ * @param None.
+ * @return None.
+ */
+inline void EUSART2_SendBreakControlEnable(void);
+
+/**
+ * @ingroup eusart2
+ * @brief This API disables the EUSART2 send break control.
+ * @param None.
+ * @return None.
+ */
+inline void EUSART2_SendBreakControlDisable(void);
+
+/**
+ * @ingroup eusart2
+ * @brief This API enables the EUSART2 AutoBaud Detection.
+ * @param bool enable.
+ * @return None.
+ */
+inline void EUSART2_AutoBaudSet(bool enable);
+
+/**
+ * @ingroup eusart2
+ * @brief This API reads the EUSART2 AutoBaud Detection Complete bit.
+ * @param None.
+ * @return bool.
+ */
+inline bool EUSART2_AutoBaudQuery(void);
+
+/**
+ * @ingroup eusart2
+ * @brief This API reads the EUSART2 AutoBaud Detection overflow bit.
+ * @param None.
+ * @return None.
+ */
+inline bool EUSART2_IsAutoBaudDetectOverflow(void);
+
+/**
+ * @ingroup eusart2
+ * @brief This API Reset the EUSART2 AutoBaud Detection Overflow bit.
+ * @param None.
+ * @return None.
+ */
+inline void EUSART2_AutoBaudDetectOverflowReset(void);
+
+/**
+ * @ingroup eusart2
+ * @brief This API checks if EUSART2 receiver has received data and ready to be read.
+ * @param None.
+ * @retval true if EUSART2 receiver FIFO has a data
+ * @retval false EUSART2 receiver FIFO is empty
+ */
 bool EUSART2_IsRxReady(void);
 
 /**
-  @Summary
-    Checks if EUSART2 data is transmitted
+ * @ingroup eusart2
+ * @brief This function checks if EUSART2 transmitter is ready to accept a data byte.
+ * @param None.
+ * @retval true if EUSART2 transmitter FIFO has atleast 1 byte space
+ * @retval false if EUSART2 transmitter FIFO is full
+ */
+bool EUSART2_IsTxReady(void);
 
-  @Description
-    This function return the status of transmit shift register
-
-  @Preconditions
-    EUSART2_Initialize() function should be called
-    before calling this function
-    EUSART2 transmitter should be enabled and EUSART2_Write
-    should be called before calling this function
-
-  @Param
-    None
-
-  @Returns
-    Status of EUSART2 receiver
-    TRUE: Data completely shifted out if the USART shift register
-    FALSE: Data is not completely shifted out of the shift register
-    
-  @Example
-    <code>
-    void main(void)
-    {
-        volatile uint8_t rxData;
-        
-        // Initialize the device
-        SYSTEM_Initialize();
-        
-        while(1)
-        {
-            if(EUSART2_IsTxReady())
-            {
-				LED_0_SetHigh();
-                EUSART2Write(rxData);
-            }
-			if(EUSART2_IsTxDone()
-            {
-                LED_0_SetLow();
-            }
-        }
-    }
-    </code>
-*/
+/**
+ * @ingroup eusart2
+ * @brief This function return the status of transmit shift register (TSR).
+ * @param None.
+ * @retval true if Data completely shifted out from the TSR
+ * @retval false if Data is present in Transmit FIFO and/or in TSR
+ */
 bool EUSART2_IsTxDone(void);
 
 /**
-  @Summary
-    Gets the error status of the last read byte.
-
-  @Description
-    This routine gets the error status of the last read byte.
-
-  @Preconditions
-    EUSART2_Initialize() function should have been called
-    before calling this function. The returned value is only
-    updated after a read is called.
-
-  @Param
-    None
-
-  @Returns
-    the status of the last read byte
-
-  @Example
-	<code>
-    void main(void)
-    {
-        volatile uint8_t rxData;
-        volatile eusart2_status_t rxStatus;
-        
-        // Initialize the device
-        SYSTEM_Initialize();
-        
-        // Enable the Global Interrupts
-        INTERRUPT_GlobalInterruptEnable();
-        
-        while(1)
-        {
-            // Logic to echo received data
-            if(EUSART2_IsRxReady())
-            {
-                rxData = EUSART2_Read();
-                rxStatus = EUSART2_GetLastStatus();
-                if(rxStatus.ferr){
-                    LED_0_SetHigh();
-                }
-            }
-        }
-    }
-    </code>
+ * @ingroup eusart2
+ * @brief This function gets the error status of the last read byte.
+ * @param None.
+ * @return Status of the last read byte. See eusart2_status_t struct for more details.
  */
-eusart2_status_t EUSART2_GetLastStatus(void);
+size_t EUSART2_ErrorGet(void);
 
 /**
-  @Summary
-    Read a byte of data from the EUSART2.
-
-  @Description
-    This routine reads a byte of data from the EUSART2.
-
-  @Preconditions
-    EUSART2_Initialize() function should have been called
-    before calling this function. The transfer status should be checked to see
-    if the receiver is not empty before calling this function.
-
-  @Param
-    None
-
-  @Returns
-    A data byte received by the driver.
-*/
+ * @ingroup eusart2
+ * @brief This function reads the 8 bits from receiver FIFO register.
+ * @pre The transfer status should be checked to see if the receiver is not empty
+ *      before calling this function. EUSART2_IsRxReady() should be checked in if () before calling this API.
+ * @param None.
+ * @return 8-bit data from RX FIFO register.
+ */
 uint8_t EUSART2_Read(void);
 
- /**
-  @Summary
-    Writes a byte of data to the EUSART2.
-
-  @Description
-    This routine writes a byte of data to the EUSART2.
-
-  @Preconditions
-    EUSART2_Initialize() function should have been called
-    before calling this function. The transfer status should be checked to see
-    if transmitter is not busy before calling this function.
-
-  @Param
-    txData  - Data byte to write to the EUSART2
-
-  @Returns
-    None
-*/
+/**
+ * @ingroup eusart2
+ * @brief This function writes a byte of data to the transmitter FIFO register.
+ * @pre The transfer status should be checked to see if the transmitter is ready to accept a byte
+ *      before calling this function. EUSART2_IsTxReady() should be checked in if() before calling this API.
+ * @param txData  - Data byte to write to the TX FIFO.
+ * @return None.
+ */
 void EUSART2_Write(uint8_t txData);
 
-
+/**
+ * @ingroup eusart2
+ * @brief This API registers the function to be called upon framing error.
+ * @param callbackHandler - a function pointer which will be called upon framing error condition.
+ * @return None.
+ */
+void EUSART2_FramingErrorCallbackRegister(void (* callbackHandler)(void));
 
 /**
-  @Summary
-    Set EUSART2 Framing Error Handler
+ * @ingroup eusart2
+ * @brief This API registers the function to be called upon overrun error.
+ * @param callbackHandler - a function pointer which will be called upon overrun error condition.
+ * @return None.
+ */
+void EUSART2_OverrunErrorCallbackRegister(void (* callbackHandler)(void));
 
-  @Description
-    This API sets the function to be called upon EUSART2 framing error
+#ifdef __cplusplus  // Provide C++ Compatibility
 
-  @Preconditions
-    Initialize  the EUSART2 before calling this API
+    }
 
-  @Param
-    Address of function to be set as framing error handler
-
-  @Returns
-    None
-*/
-void EUSART2_SetFramingErrorHandler(void (* interruptHandler)(void));
-
-/**
-  @Summary
-    Set EUSART2 Overrun Error Handler
-
-  @Description
-    This API sets the function to be called upon EUSART2 overrun error
-
-  @Preconditions
-    Initialize  the EUSART2 module before calling this API
-
-  @Param
-    Address of function to be set as overrun error handler
-
-  @Returns
-    None
-*/
-void EUSART2_SetOverrunErrorHandler(void (* interruptHandler)(void));
-
-/**
-  @Summary
-    Set EUSART2 Error Handler
-
-  @Description
-    This API sets the function to be called upon EUSART2 error
-
-  @Preconditions
-    Initialize  the EUSART2 module before calling this API
-
-  @Param
-    Address of function to be set as error handler
-
-  @Returns
-    None
-*/
-void EUSART2_SetErrorHandler(void (* interruptHandler)(void));
-
-
+#endif
 
 #endif  // EUSART2_H
-/**
- End of File
-*/

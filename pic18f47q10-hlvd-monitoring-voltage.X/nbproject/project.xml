@@ -4,12 +4,8 @@
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
             <name>pic18f47q10-hlvd-monitoring-voltage</name>
-            <creation-uuid>54c5ab83-d643-45e4-9b6b-5d993864ab5e</creation-uuid>
+            <creation-uuid>c6ac0ff2-7f4c-4889-af23-27e140564dec</creation-uuid>
             <make-project-type>0</make-project-type>
-            <c-extensions/>
-            <cpp-extensions/>
-            <header-extensions/>
-            <asminc-extensions/>
             <sourceEncoding>ISO-8859-1</sourceEncoding>
             <make-dep-projects/>
             <sourceRootList/>

@@ -1,58 +1,34 @@
 /**
-  EUSART2 Generated Driver File
-
-  @Company
-    Microchip Technology Inc.
-
-  @File Name
-    eusart2.c
-
-  @Summary
-    This is the generated driver implementation file for the EUSART2 driver using CCL
-
-  @Description
-    This source file provides APIs for EUSART2.
-    Generation Information :
-        Product Revision  :  CCL - 1.8.2
-        Device            :  PIC18F47Q43
-        Driver Version    :  2.1.0
-    The generated drivers are tested against the following:
-        Compiler          :  XC8 v2.2
-        MPLAB 	          :  Standalone
+ * EUSART2 Generated Driver API Header File
+ * 
+ * @file eusart2.c
+ * 
+ * @ingroup eusart2
+ * 
+ * @brief This is the generated driver implementation file for the EUSART2 driver using CCL
+ *
+ * @version EUSART2 Driver Version 3.0.0
 */
 
 /*
-Copyright (c) [2012-2020] Microchip Technology Inc.  
+© [2023] Microchip Technology Inc. and its subsidiaries.
 
-    All rights reserved.
-
-    You are permitted to use the accompanying software and its derivatives 
-    with Microchip products. See the Microchip license agreement accompanying 
-    this software, if any, for additional info regarding your rights and 
-    obligations.
-    
-    MICROCHIP SOFTWARE AND DOCUMENTATION ARE PROVIDED "AS IS" WITHOUT 
-    WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT 
-    LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE, NON-INFRINGEMENT 
-    AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT WILL MICROCHIP OR ITS
-    LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT, NEGLIGENCE, STRICT 
-    LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER LEGAL EQUITABLE 
-    THEORY FOR ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES INCLUDING BUT NOT 
-    LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES, 
-    OR OTHER SIMILAR COSTS. 
-    
-    To the fullest extend allowed by law, Microchip and its licensors 
-    liability will not exceed the amount of fees, if any, that you paid 
-    directly to Microchip to use this software. 
-    
-    THIRD PARTY SOFTWARE:  Notwithstanding anything to the contrary, any 
-    third party software accompanying this software is subject to the terms 
-    and conditions of the third party's license agreement.  To the extent 
-    required by third party licenses covering such third party software, 
-    the terms of such license will apply in lieu of the terms provided in 
-    this notice or applicable license.  To the extent the terms of such 
-    third party licenses prohibit any of the restrictions described here, 
-    such restrictions will not apply to such third party software.
+    Subject to your compliance with these terms, you may use Microchip 
+    software and any derivatives exclusively with Microchip products. 
+    You are responsible for complying with 3rd party license terms  
+    applicable to your use of 3rd party software (including open source  
+    software) that may accompany Microchip software. SOFTWARE IS ?AS IS.? 
+    NO WARRANTIES, WHETHER EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS 
+    SOFTWARE, INCLUDING ANY IMPLIED WARRANTIES OF NON-INFRINGEMENT,  
+    MERCHANTABILITY, OR FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT 
+    WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE, 
+    INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY 
+    KIND WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF 
+    MICROCHIP HAS BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE 
+    FORESEEABLE. TO THE FULLEST EXTENT ALLOWED BY LAW, MICROCHIP?S 
+    TOTAL LIABILITY ON ALL CLAIMS RELATED TO THE SOFTWARE WILL NOT 
+    EXCEED AMOUNT OF FEES, IF ANY, YOU PAID DIRECTLY TO MICROCHIP FOR 
+    THIS SOFTWARE.
 */
 
 /**
@@ -60,22 +36,44 @@ Copyright (c) [2012-2020] Microchip Technology Inc.
 */
 #include "../eusart2.h"
 
-const struct UART_INTERFACE EUSART2_Interface = {
-  .Initialize = EUSART2_Initialize,
-  .Write = EUSART2_Write,
-  .Read = EUSART2_Read,
-  .RxCompleteCallbackRegister = NULL,
-  .TxCompleteCallbackRegister = NULL,
-  .ErrorCallbackRegister = EUSART2_SetErrorHandler,
-  .FramingErrorCallbackRegister = EUSART2_SetFramingErrorHandler,
-  .OverrunErrorCallbackRegister = EUSART2_SetOverrunErrorHandler,
-  .ParityErrorCallbackRegister = NULL,
-  .ChecksumErrorCallbackRegister = NULL,
-  .IsRxReady = EUSART2_IsRxReady,
-  .IsTxReady = EUSART2_IsTxReady,
-  .IsTxDone = EUSART2_IsTxDone
-  };
+/**
+  Section: Macro Declarations
+*/
 
+/**
+  Section: Driver Interface
+ */
+
+const uart_drv_interface_t UART2 = {
+    .Initialize = &EUSART2_Initialize,
+    .Deinitialize = &EUSART2_Deinitialize,
+    .Read = &EUSART2_Read,
+    .Write = &EUSART2_Write,
+    .IsRxReady = &EUSART2_IsRxReady,
+    .IsTxReady = &EUSART2_IsTxReady,
+    .IsTxDone = &EUSART2_IsTxDone,
+    .TransmitEnable = &EUSART2_TransmitEnable,
+    .TransmitDisable = &EUSART2_TransmitDisable,
+    .AutoBaudSet = &EUSART2_AutoBaudSet,
+    .AutoBaudQuery = &EUSART2_AutoBaudQuery,
+    .BRGCountSet = NULL,
+    .BRGCountGet = NULL,
+    .BaudRateSet = NULL,
+    .BaudRateGet = NULL,
+    .AutoBaudEventEnableGet = NULL,
+    .ErrorGet = &EUSART2_ErrorGet,
+    .TxCompleteCallbackRegister = NULL,
+    .RxCompleteCallbackRegister = NULL,
+    .TxCollisionCallbackRegister = NULL,
+    .FramingErrorCallbackRegister = &EUSART2_FramingErrorCallbackRegister,
+    .OverrunErrorCallbackRegister = &EUSART2_OverrunErrorCallbackRegister,
+    .ParityErrorCallbackRegister = NULL,
+    .EventCallbackRegister = NULL,
+};
+
+/**
+  Section: EUSART2 variables
+*/
 volatile eusart2_status_t eusart2RxLastError;
 
 /**
@@ -84,48 +82,112 @@ volatile eusart2_status_t eusart2RxLastError;
 
 void (*EUSART2_FramingErrorHandler)(void);
 void (*EUSART2_OverrunErrorHandler)(void);
-void (*EUSART2_ErrorHandler)(void);
 
-void EUSART2_DefaultFramingErrorHandler(void);
-void EUSART2_DefaultOverrunErrorHandler(void);
-void EUSART2_DefaultErrorHandler(void);
+static void EUSART2_DefaultFramingErrorCallback(void);
+static void EUSART2_DefaultOverrunErrorCallback(void);
+
+
+/**
+  Section: EUSART2  APIs
+*/
 
 void EUSART2_Initialize(void)
 {
     // Set the EUSART2 module to the options selected in the user interface.
 
-    // ABDEN disabled; WUE disabled; BRG16 16bit_generator; SCKP Non-Inverted; ABDOVF no_overflow; 
-    BAUD2CON = 0x48;
+    //ABDEN disabled; WUE disabled; BRG16 16bit_generator; SCKP Non-Inverted; ABDOVF no_overflow; 
+    BAUD2CON = 0x48; 
+    //ADDEN disabled; CREN enabled; SREN disabled; RX9 8-bit; SPEN enabled; 
+    RC2STA = 0x90; 
+    //TX9D 0x0; BRGH hi_speed; SENDB sync_break_complete; SYNC asynchronous; TXEN enabled; TX9 8-bit; CSRC client; 
+    TX2STA = 0x26; 
+    //SPBRGL 25; 
+    SP2BRGL = 0x19; 
+    //SPBRGH 0; 
+    SP2BRGH = 0x0; 
 
-    // ADDEN disabled; CREN disabled; SREN disabled; RX9 8-bit; SPEN enabled; 
-    RC2STA = 0x80;
-
-    // TX9D 0x0; BRGH hi_speed; SENDB sync_break_complete; SYNC asynchronous; TXEN enabled; TX9 8-bit; CSRC client; 
-    TX2STA = 0x26;
-
-    // SPBRGL 25; 
-    SP2BRGL = 0x19;
-
-    // SPBRGH 0; 
-    SP2BRGH = 0x0;
-
-
-    EUSART2_SetFramingErrorHandler(EUSART2_DefaultFramingErrorHandler);
-    EUSART2_SetOverrunErrorHandler(EUSART2_DefaultOverrunErrorHandler);
-    EUSART2_SetErrorHandler(EUSART2_DefaultErrorHandler);
-
-    eusart2RxLastError.status = 0;
+    EUSART2_FramingErrorCallbackRegister(EUSART2_DefaultFramingErrorCallback);
+    EUSART2_OverrunErrorCallbackRegister(EUSART2_DefaultOverrunErrorCallback);
+    eusart2RxLastError.status = 0;  
 
 }
 
-bool EUSART2_IsTxReady(void)
+void EUSART2_Deinitialize(void)
 {
-    return (bool)(PIR3bits.TX2IF && TX2STAbits.TXEN);
+    BAUD2CON = 0x00;
+    RC2STA = 0x00;
+    TX2STA = 0x00;
+    SP2BRGL = 0x00;
+    SP2BRGH = 0x00;
 }
 
-bool EUSART2_is_tx_ready(void)
+inline void EUSART2_Enable(void)
 {
-    return EUSART2_IsTxReady();
+    RC2STAbits.SPEN = 1;
+
+}
+
+inline void EUSART2_Disable(void)
+{
+    RC2STAbits.SPEN = 0;
+}
+
+
+inline void EUSART2_TransmitEnable(void)
+{
+    TX2STAbits.TXEN = 1;
+}
+
+inline void EUSART2_TransmitDisable(void)
+{
+    TX2STAbits.TXEN = 0;
+}
+
+inline void EUSART2_ReceiveEnable(void)
+{
+    RC2STAbits.CREN = 1;
+}
+
+inline void EUSART2_ReceiveDisable(void)
+{
+    RC2STAbits.CREN = 0;
+}
+
+inline void EUSART2_SendBreakControlEnable(void)
+{
+    TX2STAbits.SENDB = 1;
+}
+
+inline void EUSART2_SendBreakControlDisable(void)
+{
+    TX2STAbits.SENDB = 0;
+}
+
+inline void EUSART2_AutoBaudSet(bool enable)
+{
+    if(enable)
+    {
+        BAUD2CONbits.ABDEN = 1;
+    }
+    else
+    {
+       BAUD2CONbits.ABDEN = 0; 
+    }
+}
+
+inline bool EUSART2_AutoBaudQuery(void)
+{
+return (bool)(!BAUD2CONbits.ABDEN);
+}
+
+inline bool EUSART2_IsAutoBaudDetectOverflow(void)
+{
+    return (bool)BAUD2CONbits.ABDOVF; 
+}
+
+inline void EUSART2_AutoBaudDetectOverflowReset(void)
+{
+    BAUD2CONbits.ABDOVF = 0; 
 }
 
 bool EUSART2_IsRxReady(void)
@@ -133,9 +195,9 @@ bool EUSART2_IsRxReady(void)
     return (bool)(PIR3bits.RC2IF);
 }
 
-bool EUSART2_is_rx_ready(void)
-{    
-    return EUSART2_IsRxReady();
+bool EUSART2_IsTxReady(void)
+{
+    return (bool)(PIR3bits.TX2IF && TX2STAbits.TXEN);
 }
 
 bool EUSART2_IsTxDone(void)
@@ -143,85 +205,75 @@ bool EUSART2_IsTxDone(void)
     return TX2STAbits.TRMT;
 }
 
-bool EUSART2_is_tx_done(void)
+size_t EUSART2_ErrorGet(void)
 {
-    return EUSART2_IsTxDone();
-}
-
-eusart2_status_t EUSART2_GetLastStatus(void){
-    return eusart2RxLastError;
-}
-
-eusart2_status_t EUSART2_get_last_status(void){
-    return EUSART2_GetLastStatus();
+    return eusart2RxLastError.status;
 }
 
 uint8_t EUSART2_Read(void)
 {
-    while(!PIR3bits.RC2IF)
-    {
-    }
-
     eusart2RxLastError.status = 0;
-    
-    if(1 == RC2STAbits.OERR)
+    if(RC2STAbits.OERR)
     {
-        // EUSART2 error - restart
-
-        RC2STAbits.CREN = 0; 
-        RC2STAbits.CREN = 1; 
+        eusart2RxLastError.oerr = 1;
+        if(NULL != EUSART2_OverrunErrorHandler)
+        {
+            EUSART2_OverrunErrorHandler();
+        }   
     }
-
+    if(RC2STAbits.FERR)
+    {
+        eusart2RxLastError.ferr = 1;
+        if(NULL != EUSART2_FramingErrorHandler)
+        {
+            EUSART2_FramingErrorHandler();
+        }   
+    }
     return RC2REG;
 }
 
 void EUSART2_Write(uint8_t txData)
 {
-    while(0 == PIR3bits.TX2IF)
-    {
-    }
-
-    TX2REG = txData;    // Write the data byte to the USART.
+    TX2REG = txData;
 }
 
-char getch(void)
+int getch(void)
 {
+    while(!(EUSART2_IsRxReady()));
     return EUSART2_Read();
 }
 
 void putch(char txData)
 {
-    EUSART2_Write(txData);
+    while(!(EUSART2_IsTxReady()));
+    return EUSART2_Write(txData);   
 }
 
+static void EUSART2_DefaultFramingErrorCallback(void)
+{
+    
+}
 
-
-void EUSART2_DefaultFramingErrorHandler(void){}
-
-void EUSART2_DefaultOverrunErrorHandler(void){
-    // EUSART2 error - restart
-
+static void EUSART2_DefaultOverrunErrorCallback(void)
+{
+    //Continuous Receive must be cleared to clear Overrun Error else Rx will not receive upcoming bytes
     RC2STAbits.CREN = 0;
     RC2STAbits.CREN = 1;
-
 }
 
-void EUSART2_DefaultErrorHandler(void){
+void EUSART2_FramingErrorCallbackRegister(void (* callbackHandler)(void))
+{
+    if(NULL != callbackHandler)
+    {
+        EUSART2_FramingErrorHandler = callbackHandler;
+    }
 }
 
-void EUSART2_SetFramingErrorHandler(void (* interruptHandler)(void)){
-    EUSART2_FramingErrorHandler = interruptHandler;
+void EUSART2_OverrunErrorCallbackRegister(void (* callbackHandler)(void))
+{
+    if(NULL != callbackHandler)
+    {
+        EUSART2_OverrunErrorHandler = callbackHandler;
+    }    
 }
 
-void EUSART2_SetOverrunErrorHandler(void (* interruptHandler)(void)){
-    EUSART2_OverrunErrorHandler = interruptHandler;
-}
-
-void EUSART2_SetErrorHandler(void (* interruptHandler)(void)){
-    EUSART2_ErrorHandler = interruptHandler;
-}
-
-
-/**
-  End of File
-*/
