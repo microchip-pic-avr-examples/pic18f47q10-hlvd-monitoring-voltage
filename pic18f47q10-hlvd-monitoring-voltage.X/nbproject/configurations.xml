@@ -287,7 +287,7 @@
         <property key="memories.programmemory.ranges" value="0-1ffff"/>
         <property key="poweroptions.powerenable" value="false"/>
         <property key="programmerToGoFilePath"
-                  value="C:/Projects/pic18f47q10-hlvd-monitoring-voltage/pic18f47q10-hlvd-monitoring-voltage.X/debug/free/pic18f47q10-hlvd-monitoring-voltage_ptg"/>
+                  value="C:/Projects/pic18f47q10-hlvd-feature-branch/pic18f47q10-hlvd-monitoring-voltage/pic18f47q10-hlvd-monitoring-voltage.X/debug/free/pic18f47q10-hlvd-monitoring-voltage_ptg"/>
         <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.preservedataflash" value="false"/>
         <property key="programoptions.preservedataflash.ranges"
@@ -527,7 +527,7 @@
         <property key="memories.programmemory.ranges" value="0-1ffff"/>
         <property key="poweroptions.powerenable" value="false"/>
         <property key="programmerToGoFilePath"
-                  value="C:/Projects/pic18f47q10-hlvd-monitoring-voltage/pic18f47q10-hlvd-monitoring-voltage.X/debug/pro/pic18f47q10-hlvd-monitoring-voltage_ptg"/>
+                  value="C:/Projects/pic18f47q10-hlvd-feature-branch/pic18f47q10-hlvd-monitoring-voltage/pic18f47q10-hlvd-monitoring-voltage.X/debug/pro/pic18f47q10-hlvd-monitoring-voltage_ptg"/>
         <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.preservedataflash" value="false"/>
         <property key="programoptions.preservedataflash.ranges"

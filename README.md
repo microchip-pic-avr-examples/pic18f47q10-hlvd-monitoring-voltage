@@ -3,7 +3,7 @@
 # Monitoring Supply Voltage using HLVD of PIC18F47Q10 microcontroller
 
 # Introduction
-Many of the PIC microcontrollers have a High/Low-Voltage Detect (HLVD) module that can be used to monitor the device voltage (VDD) and indicate the user if voltage has decreased below a specified voltage or increased above a specified voltage.  This is a programmable circuit that sets a device voltage trip point and the direction of change from that point (positive going, negative going or both).  This feature is useful in battery monitoring applications.
+Many of the PIC® microcontrollers have a High/Low-Voltage Detect (HLVD) module that are be used to monitor the device voltage (V<sub>DD</sub>) and indicate the user if voltage has decreased below a specified voltage or increased above a specified voltage.  This is a programmable circuit that sets a device voltage trip point and the direction of change from that point (positive going, negative going or both).  This feature is useful in battery monitoring applications.
 This example demonstrates using an HLVD module to quickly detect when the supply voltage of the microcontroller has decreased below the specified trip point or increased above the specified trip point.
 
 # Related Documents / Useful Links
@@ -15,7 +15,7 @@ This example demonstrates using an HLVD module to quickly detect when the supply
 
 # HLVD
 
-The HLVD is a necessary power supply monitoring feature in numerous battery powered applications, where the supply voltage of a microcontroller could fall below the specified threshold level and require battery replacement or recharging for an uninterrupted operation of the microcontroller.  The HLVD feature is capable of monitoring supply voltage of a microcontroller which is directly powered up from a battery power source. The HLVD based voltage monitoring circuitry has several advantages over an ADC based voltage monitoring circuit. When the HLVD module is enabled, a comparator within HLVD uses an internally generated voltage reference as the set point. The set point is compared with the trip point. The “trip point” voltage is the voltage level at which the device detects a high or low voltage event, depending on the configuration of the HLVD module. When the supply voltage is equal to the trip point, the comparator generates an interrupt signal by setting the HLVDIF bit. The trip point voltage is software programmable to any of 16 values as shown in the below Table 1. The trip point is selected by programming the SEL bits.
+The HLVD is a necessary power supply monitoring feature in numerous battery powered applications, where the supply voltage of a microcontroller falls below the specified threshold level and requires battery replacement or recharging for an uninterrupted operation of the microcontroller. The HLVD feature is capable of monitoring the supply voltage of a microcontroller which is directly powered up from a battery power source. The HLVD based voltage monitoring circuitry has several advantages over an ADC based voltage monitoring circuit. When the HLVD module is enabled, a comparator within HLVD uses an internally generated voltage reference as the set point. The set point is compared with the trip point. The “trip point” voltage is the voltage level at which the device detects a high or low voltage event, depending on the configuration of the HLVD module. When the supply voltage is equal to the trip point, the comparator generates an interrupt signal by setting the HLVDIF bit. The trip point voltage is software programmable to any of 16 values as shown in the below Table 1. The trip point is selected by programming the SEL bits.
 
 
 ![Table HLVD sel](images/Table_HLVD_SEL.png)
@@ -23,7 +23,7 @@ The HLVD is a necessary power supply monitoring feature in numerous battery powe
 			Table 1: HLVD Trip point Voltages
 
 
-***Note: Refer the device data sheet for the typical Trip Point Voltage (V) settings and refer MCC configuration GUI of HLVD peripheral for minimum and maximum Trip Point Voltage (V) settings.***
+***Note: Refer to the device data sheet for the typical Trip Point Voltage (V) settings and the MCC configuration GUI of HLVD peripheral for minimum and maximum Trip Point Voltage (V) settings.***
 
 # Demo Description
 
@@ -32,16 +32,16 @@ The HLVD is a necessary power supply monitoring feature in numerous battery powe
 		Figure 1: Block diagram of application demo
 
 * PIC18F47Q10 Curiosity Nano board and external power supply are used to demonstrate the configuration and usage of the HLVD module. HLVD is used to monitor the microcontroller supply voltage for low and high voltage detect.
-* After power up the trip-point voltage of HLVD is configures to 3.15V to detect low supply voltage.    
-* If the supply voltage is decreased below the set-point, the HLVD module generates an interrupt. EUSART is used to send messages to the terminal window, that low voltage is detected.
+* After power-up the trip-point voltage of the HLVD is configured to 3.15V to detect low supply voltage.    
+* If the supply voltage is decreased below the set-point, the HLVD module generates an interrupt. UART is used to send messages to the terminal window, that low voltage is detected.
 * Once the low voltage is detected, the trip point is changed to 4.35V, to detect high supply voltage using HLVD.
-* If the supply voltage is increased, above the set-point the HLVD module generates an interrupt. EUSART is used to send a message to the terminal, that high voltage is detected.
+* If the supply voltage is increased above the set-point, the HLVD module generates an interrupt. UART is used to send a message to the terminal, that high voltage is detected.
 * After detection of the high supply voltage, the set point is changed back to 3.15V to detect low supply voltage. The process is repeated.
 
 # Hardware used
 * [PIC18F47Q10 Curiosity nano evaluation board](https://www.microchip.com/Developmenttools/ProductDetails/DM182029)
 
-With full program and debug capabilities, the PIC18F47Q10 Curiosity Nano evaluation kit offers complete support for the new design.The kit uses the MPLAB® X IDE and MPLAB® Code Configurator (MCC), providing access to the Intelligent Analog and Core Independent Peripherals on the PIC18F47Q10.
+With full program and debug capabilities, the PIC18F47Q10 Curiosity Nano evaluation kit offers complete support for the new design. The kit uses the MPLAB® X IDE and MPLAB® Code Configurator (MCC), providing access to the Intelligent Analog and Core Independent Peripherals on the PIC18F47Q10.
 Figure 2 shows the PIC18F47Q10 Curiosity Nano board.
 
 ![PIC18F47Q10 Curiosity Nano board](images/PIC18F47Q10_Curiosity_Nano_board.png)
@@ -133,9 +133,9 @@ Add custom name to the RE0 output pin as LED using Pins window. Check the Start 
 
 ### Hardware Setup
  Follow the below steps for Hardware setup:
-1.	To powerup the PIC18F47Q10 device using external power supply, the VOFF pin on the curiosity nano board should be connected to the ground. Connect the VOFF pin to GND pin using a jumper cable. Refer below figures.
-2.	Connect external power supply to VTG pin of the curiosity nano board to power up the PIC18F47Q10 device using an external power supply. Make sure external supply voltage is 3.3V. Refer below figures.
-3.	Setup the hardware, as shown in Figure 10.
+1. To power-up the PIC18F47Q10 device using external power supply, the VOFF pin on the Curiosity Nano Board should be connected to the ground. Connect the VOFF pin to GND pin using a jumper cable. Refer to the below figures.
+2.	Connect external power supply to VTG pin of the Curiosity Nano Board to power-up the PIC18F47Q10 device using an external power supply. Make sure the external supply voltage is 3.3V. Refer to the below figures.
+3.	Set up the hardware, as shown in Figure 10.
 
 ![VTG_and_VOFF_pins](images/VTG_and_VOFF_pins.png)
 
@@ -143,7 +143,7 @@ Add custom name to the RE0 output pin as LED using Pins window. Check the Start 
 
 ![Hardware_setup](images/Hardware_setup.jpg)
 
-		Figure 10: Hardware setup
+		Figure 10: Hardware set up
 
 4.	Connect PIC18F47Q10 Curiosity Nano to the PC using an USB cable.
 
